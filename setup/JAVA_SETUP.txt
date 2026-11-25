@@ -1,0 +1,27 @@
+=====================================================================
+  JAVA LAB SETUP FROM THE PEN DRIVE  (Windows, Git Bash)
+=====================================================================
+You need 3 things: Java 17+, Maven, and the Maven cache (.m2).
+
+1. JAVA
+   java -version  → shows "17" or "21"? Good, skip.
+   Not installed: run the JDK installer on the pen drive (setup/java/),
+   tick "Set JAVA_HOME" and "Add to PATH". Reopen VS Code.
+
+2. MAVEN
+   mvn -v  → shows "Apache Maven 3.9"? Good, skip.
+   Not installed:
+     a) Copy the folder  setup/apache-maven-3.9.9  to  C:\
+     b) In PowerShell (not Git Bash), run this one line:
+        [Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\apache-maven-3.9.9\bin", "User")
+     c) Close VS Code fully and open it again.  mvn -v  should work now.
+
+3. MAVEN CACHE (.m2): Spring Boot's files, so no internet is needed
+   In Git Bash:
+     mkdir -p ~/.m2
+     cp -r /e/setup/m2/repository ~/.m2/        ← change /e to your pen drive letter
+   Check:
+     ls ~/.m2/repository/org/springframework/boot
+   You should see folders like spring-boot-starter-web.
+
+Then follow commands/06_run_java_lab.txt.
